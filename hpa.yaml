@@ -1,0 +1,21 @@
+kind: HorizontalPodAutoscaler 
+apiVersion: autoscaling/v2beta1 
+metadata: 
+  name: recon-demo 
+spec: 
+  maxReplicas: 10 
+  minReplicas: 1 
+  scaleTargetRef: 
+    apiVersion: apps/v1 
+    kind: Deployment 
+    name: recon-demo 
+  metrics: 
+      - type: Object
+        object:  
+                metricName: net.http.request.count
+                targetValue: 1
+                target:
+                        kind: Service
+                        name: recon-demo
+
+

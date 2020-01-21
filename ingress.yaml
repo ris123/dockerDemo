@@ -1,0 +1,10 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+        name: recon-demo
+        annotations: 
+                nginx.kubernetes.io/ssl-redirect: \"false\"
+spec:
+    backend:
+           serviceName: recon-demo
+           servicePort: 80
